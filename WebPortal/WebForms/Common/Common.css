@@ -1,0 +1,72 @@
+﻿.absoluteCenter {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.welcomePos {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+.loginPanel {
+    display: block;
+    text-align: center;
+}
+.inlined {
+    display: inline;
+}
+.blocked {
+    display: block;
+}
+.divLabelEditpair {
+    margin: 20px auto;
+    text-align: initial;
+}
+.labelBeforeEdit {
+    margin-right: 15px;
+}
+.editBoxLogin {
+    position: absolute;
+    left: 75px;
+}
+.validatorLogin {
+    position: absolute;
+    left: 350px;
+    color: #222222;
+}
+.editBoxChangePw {
+    position: absolute;
+    left: 150px;
+}
+.validatorChengePw  {
+    position: absolute;
+    left: 425px;
+    color: #222222;
+}
+.greyColor {
+    color: #222222;
+}
+.middleButton {
+    margin: auto;
+}
+.about_label {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 40%;
+}
+.userGridView {
+    display: table;
+    margin: 20px auto;
+    border-style: none;
+    text-align: center;
+}
+.validationSummaryMiddle {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+}
+.filterDiv {
+    display: block;
+    margin: 10px auto;
+}

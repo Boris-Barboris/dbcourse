@@ -1,0 +1,72 @@
+﻿html { 
+  background: url(Background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#pageHeader {
+    height: 90px;
+    line-height: 90px;
+    font-family: Arial;
+    color: white;
+    font-weight: bold;
+    font-size: 400%;
+    vertical-align: middle;
+    text-align: center;
+    display: block;
+    background-color: rgba(128, 128, 128, 0.5);
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#tabPanel {
+    background-color: rgba(128, 128, 128, 0.15);
+}
+#pageContent {
+    position:absolute; 
+    bottom:0px;
+    top:130px; 
+    width:100%;
+}
+#left_tabs {
+    display: inline;
+}
+#right_tabs {
+    display: inline;
+    position: absolute; 
+    direction: rtl;
+    right: 0px;
+}
+.tabLink {
+    margin-left: 25px;
+    line-height: 40px;
+}
+.tabLinkRight {
+    margin-right: 20px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+.centerText {
+    text-align: center;
+    vertical-align: middle;
+}
+.errorLabel {
+    position:absolute; 
+    bottom:0px;
+    width:100%;
+    max-width:1000px;
+    text-align: center;
+    word-wrap: normal;
+    word-break: break-all;
+}
+.errorLabelMiddle {
+    display: block;
+    width:100%;
+    margin: auto;
+    text-align: center;
+}

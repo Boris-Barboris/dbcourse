@@ -1,0 +1,4 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+[System.ComponentModel.DataAnnotations.MetadataType(typeof(Metadata.YOURCLASSNAME))]
+before EF-generated class definition

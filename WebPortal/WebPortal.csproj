@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A899F3F1-9413-48EC-A2A9-500770D7A1C0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebPortal</RootNamespace>
+    <AssemblyName>WebPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JuiceUI">
+      <HintPath>..\packages\JuiceUI.1.1.1\lib\net40\JuiceUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource">
+      <HintPath>..\packages\Microsoft.AspNet.EntityDataSource.6.0.0\lib\net40\Microsoft.AspNet.EntityDataSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_diagonals-small_25_c9c9c9_40x40.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_flat_0_313f3c_40x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_flat_0_4d4d4d_40x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_flat_100_f1eeee_40x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_highlight-soft_50_f7e17d_1x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_highlight-soft_65_e9f245_1x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_highlight-soft_75_59c9c0_1x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_highlight-soft_75_d8ff94_1x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-bg_inset-soft_95_f46f5d_1x100.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_16837f_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_186764_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_834916_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\images\ui-icons_9f1d1d_256x240.png" />
+    <Content Include="Content\themes\Fresh-Squeezed\jquery-ui-1.9.0.custom.css" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_flat_0_303030_40x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_flat_100_383838_40x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_flat_75_f2f2f2_40x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_inset-hard_5_2b2b2b_1x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_inset-soft_15_5e5e5e_1x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_inset-soft_45_ffc905_1x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_inset-soft_75_ffec52_1x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-bg_inset-soft_95_ff6124_1x100.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_1c1c1c_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_303030_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_774322_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_8a4e19_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_ffbc0f_256x240.png" />
+    <Content Include="Content\themes\Supercharged\images\ui-icons_ffc905_256x240.png" />
+    <Content Include="Content\themes\Supercharged\jquery-ui-1.9.0.custom.css" />
+    <Content Include="DataBase\Init_custom.sql" />
+    <Content Include="DataBase\Metadata\HowToAddMetadata.txt" />
+    <Content Include="DataBase\SkySharkDb.edmx.sql" />
+    <Content Include="DynamicData\EntityTemplates\Default.ascx" />
+    <Content Include="DynamicData\EntityTemplates\Default_Edit.ascx" />
+    <Content Include="DynamicData\EntityTemplates\Default_Insert.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Boolean.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Boolean_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Children.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Children_Insert.ascx" />
+    <Content Include="DynamicData\FieldTemplates\DateTime.ascx" />
+    <Content Include="DynamicData\FieldTemplates\DateTime_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Decimal_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\EmailAddress.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Enumeration.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ForeignKey.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Integer_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ManyToMany.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Text.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Text_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Url.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Url_Edit.ascx" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <None Include="Scripts\amplify-vsdoc.js" />
+    <Content Include="Scripts\amplify.js" />
+    <Content Include="Scripts\amplify.min.js" />
+    <Content Include="Scripts\amplify\amplify.core.js" />
+    <Content Include="Scripts\amplify\amplify.core.min.js" />
+    <Content Include="Scripts\amplify\amplify.request.js" />
+    <Content Include="Scripts\amplify\amplify.request.min.js" />
+    <Content Include="Scripts\amplify\amplify.store.js" />
+    <Content Include="Scripts\amplify\amplify.store.min.js" />
+    <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.9.0.js" />
+    <Content Include="Scripts\jquery-ui-1.9.0.min.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
+    <Content Include="Scripts\juice.js" />
+    <Content Include="Scripts\juice.min.js" />
+    <Content Include="Scripts\MIT-LICENSE.txt" />
+    <Content Include="Scripts\README.txt" />
+    <Content Include="Scripts\TimeDatePicker.css" />
+    <Content Include="Scripts\TimeDatePicker.js" />
+    <Content Include="Web.config" />
+    <Content Include="WebForms\Background.jpg" />
+    <Content Include="App_Themes\Default\Default.skin" />
+    <Content Include="Global.asax">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForms\BusinessManager\FinReport.aspx" />
+    <Content Include="WebForms\BusinessManager\Manager.css" />
+    <Content Include="WebForms\BusinessManager\NewFlight.aspx" />
+    <Content Include="WebForms\BusinessManager\PassengerList.aspx" />
+    <Content Include="WebForms\Common\About.aspx" />
+    <Content Include="WebForms\Common\CustomMessage.aspx" />
+    <Content Include="WebForms\Common\ErrorPage.aspx" />
+    <Content Include="WebForms\Common\FlightList.aspx" />
+    <Content Include="WebForms\Common\PersonalTickets.aspx" />
+    <Content Include="WebForms\Common\RegisterClient.aspx" />
+    <Content Include="WebForms\Common\ReserveSeat.aspx" />
+    <Content Include="WebForms\Executive\Executive.css" />
+    <Content Include="WebForms\Executive\SearchReservations.aspx" />
+    <Content Include="WebForms\Executive\ReservationList.aspx" />
+    <Content Include="WebForms\NetworkAdministrator\BackUp.aspx" />
+    <Content Include="WebForms\NetworkAdministrator\ManageUsers.aspx" />
+    <Content Include="WebForms\NetworkAdministrator\NetworkAdmin.css" />
+    <EntityDeploy Include="DataBase\SkySharkDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SkySharkDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataBase\SkySharkDb.edmx.diagram">
+      <DependentUpon>SkySharkDb.edmx</DependentUpon>
+    </Content>
+    <Content Include="packages.config" />
+    <None Include="DataBase\SkySharkDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SkySharkDb.cs</LastGenOutput>
+      <DependentUpon>SkySharkDb.edmx</DependentUpon>
+    </None>
+    <Content Include="DataBase\DbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbContext.Context.cs</LastGenOutput>
+      <DependentUpon>SkySharkDb.edmx</DependentUpon>
+    </Content>
+    <None Include="WebForms\MasterForm.Master" />
+    <Content Include="WebForms\Common\ChangePassword.aspx" />
+    <Content Include="WebForms\Common\Default.aspx" />
+    <Content Include="WebForms\Common\Common.css" />
+    <Content Include="WebForms\Common\Login.aspx" />
+    <Content Include="WebForms\MasterForm.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBase\BLL\Cancellation.cs" />
+    <Compile Include="DataBase\BLL\FinancialReport.cs" />
+    <Compile Include="DataBase\BLL\FlightDetails.cs" />
+    <Compile Include="DataBase\BLL\Passenger.cs" />
+    <Compile Include="DataBase\BLL\Reservation.cs" />
+    <Compile Include="DataBase\Cancellation.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\FlightClass.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\FlightDetails.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Metadata\CancellationMetadata.cs" />
+    <Compile Include="DataBase\Metadata\FlightDetailsMetadata.cs" />
+    <Compile Include="DataBase\Metadata\PassengerMetadata.cs" />
+    <Compile Include="DataBase\Metadata\ReservationMetadata.cs" />
+    <Compile Include="DataBase\Metadata\UserMetadata.cs" />
+    <Compile Include="DataBase\Passenger.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\RandomInput.cs" />
+    <Compile Include="DataBase\Reservation.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ReservationStatus.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\SkySharkDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\SkySharkDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkySharkDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\User.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserRole.cs">
+      <DependentUpon>SkySharkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default.ascx.cs">
+      <DependentUpon>Default.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default.ascx.designer.cs">
+      <DependentUpon>Default.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Edit.ascx.cs">
+      <DependentUpon>Default_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Edit.ascx.designer.cs">
+      <DependentUpon>Default_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Insert.ascx.cs">
+      <DependentUpon>Default_Insert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Insert.ascx.designer.cs">
+      <DependentUpon>Default_Insert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean.ascx.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean.ascx.designer.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean_Edit.ascx.cs">
+      <DependentUpon>Boolean_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean_Edit.ascx.designer.cs">
+      <DependentUpon>Boolean_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children.ascx.cs">
+      <DependentUpon>Children.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children.ascx.designer.cs">
+      <DependentUpon>Children.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children_Insert.ascx.cs">
+      <DependentUpon>Children_Insert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children_Insert.ascx.designer.cs">
+      <DependentUpon>Children_Insert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime.ascx.cs">
+      <DependentUpon>DateTime.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime.ascx.designer.cs">
+      <DependentUpon>DateTime.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime_Edit.ascx.cs">
+      <DependentUpon>DateTime_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime_Edit.ascx.designer.cs">
+      <DependentUpon>DateTime_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Decimal_Edit.ascx.cs">
+      <DependentUpon>Decimal_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Decimal_Edit.ascx.designer.cs">
+      <DependentUpon>Decimal_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\EmailAddress.ascx.cs">
+      <DependentUpon>EmailAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\EmailAddress.ascx.designer.cs">
+      <DependentUpon>EmailAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration.ascx.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration.ascx.designer.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx.cs">
+      <DependentUpon>Enumeration_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx.designer.cs">
+      <DependentUpon>Enumeration_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey.ascx.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey.ascx.designer.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx.cs">
+      <DependentUpon>ForeignKey_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx.designer.cs">
+      <DependentUpon>ForeignKey_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Integer_Edit.ascx.cs">
+      <DependentUpon>Integer_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Integer_Edit.ascx.designer.cs">
+      <DependentUpon>Integer_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany.ascx.cs">
+      <DependentUpon>ManyToMany.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany.ascx.designer.cs">
+      <DependentUpon>ManyToMany.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx.cs">
+      <DependentUpon>ManyToMany_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx.designer.cs">
+      <DependentUpon>ManyToMany_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx.cs">
+      <DependentUpon>MultilineText_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx.designer.cs">
+      <DependentUpon>MultilineText_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text.ascx.cs">
+      <DependentUpon>Text.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text.ascx.designer.cs">
+      <DependentUpon>Text.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text_Edit.ascx.cs">
+      <DependentUpon>Text_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text_Edit.ascx.designer.cs">
+      <DependentUpon>Text_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url.ascx.cs">
+      <DependentUpon>Url.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url.ascx.designer.cs">
+      <DependentUpon>Url.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url_Edit.ascx.cs">
+      <DependentUpon>Url_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url_Edit.ascx.designer.cs">
+      <DependentUpon>Url_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\FinReport.aspx.cs">
+      <DependentUpon>FinReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\FinReport.aspx.designer.cs">
+      <DependentUpon>FinReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\NewFlight.aspx.cs">
+      <DependentUpon>NewFlight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\NewFlight.aspx.designer.cs">
+      <DependentUpon>NewFlight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\PassengerList.aspx.cs">
+      <DependentUpon>PassengerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\BusinessManager\PassengerList.aspx.designer.cs">
+      <DependentUpon>PassengerList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\CustomMessage.aspx.cs">
+      <DependentUpon>CustomMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\CustomMessage.aspx.designer.cs">
+      <DependentUpon>CustomMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\FlightList.aspx.cs">
+      <DependentUpon>FlightList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\FlightList.aspx.designer.cs">
+      <DependentUpon>FlightList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForms\Common\PersonalTickets.aspx.cs">
+      <DependentUpon>PersonalTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\PersonalTickets.aspx.designer.cs">
+      <DependentUpon>PersonalTickets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\RegisterClient.aspx.cs">
+      <DependentUpon>RegisterClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\RegisterClient.aspx.designer.cs">
+      <DependentUpon>RegisterClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Common\ReserveSeat.aspx.cs">
+      <DependentUpon>ReserveSeat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Common\ReserveSeat.aspx.designer.cs">
+      <DependentUpon>ReserveSeat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Executive\SearchReservations.aspx.cs">
+      <DependentUpon>SearchReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Executive\SearchReservations.aspx.designer.cs">
+      <DependentUpon>SearchReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Executive\ReservationList.aspx.cs">
+      <DependentUpon>ReservationList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Executive\ReservationList.aspx.designer.cs">
+      <DependentUpon>ReservationList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\MasterForm.Master.cs">
+      <DependentUpon>MasterForm.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\MasterForm.Master.designer.cs">
+      <DependentUpon>MasterForm.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\NetworkAdministrator\BackUp.aspx.cs">
+      <DependentUpon>BackUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\NetworkAdministrator\BackUp.aspx.designer.cs">
+      <DependentUpon>BackUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\NetworkAdministrator\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\NetworkAdministrator\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1652</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1652/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

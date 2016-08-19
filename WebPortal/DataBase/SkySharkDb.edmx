@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SkySharkDb.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SkySharkDbStoreContainer">
+    <EntitySet Name="UserSet" EntityType="SkySharkDb.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FlightDetailsSet" EntityType="SkySharkDb.Store.FlightDetailsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReservationSet" EntityType="SkySharkDb.Store.ReservationSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CancellationSet" EntityType="SkySharkDb.Store.CancellationSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PassengerSet" EntityType="SkySharkDb.Store.PassengerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserReservation" EntityType="SkySharkDb.Store.UserReservation" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ReservationFlightDetails" Association="SkySharkDb.Store.ReservationFlightDetails">
+      <End Role="Reservation" EntitySet="ReservationSet" />
+      <End Role="FlightDetails" EntitySet="FlightDetailsSet" />
+    </AssociationSet>
+    <AssociationSet Name="ReservationCancellation" Association="SkySharkDb.Store.ReservationCancellation">
+      <End Role="Cancellation" EntitySet="CancellationSet" />
+      <End Role="Reservation" EntitySet="ReservationSet" />
+    </AssociationSet>
+    <AssociationSet Name="CancellationUser" Association="SkySharkDb.Store.CancellationUser">
+      <End Role="Cancellation" EntitySet="CancellationSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="PassengerReservation" Association="SkySharkDb.Store.PassengerReservation">
+      <End Role="Passenger" EntitySet="PassengerSet" />
+      <End Role="Reservation" EntitySet="ReservationSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserReservation_User" Association="SkySharkDb.Store.FK_UserReservation_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="UserReservation" EntitySet="UserReservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserReservation_Reservation" Association="SkySharkDb.Store.FK_UserReservation_Reservation">
+      <End Role="Reservation" EntitySet="ReservationSet" />
+      <End Role="UserReservation" EntitySet="UserReservation" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Role" Type="tinyint" Nullable="false" />
+    <Property Name="passwordChanged" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="EMail" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FlightDetailsSet">
+    <Key>
+      <PropertyRef Name="FlightNo" />
+    </Key>
+    <Property Name="FlightNo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Origin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Destination" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepTime" Type="datetime" Nullable="false" />
+    <Property Name="ArrTime" Type="datetime" Nullable="false" />
+    <Property Name="AircraftType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SeatsEco" Type="smallint" Nullable="false" />
+    <Property Name="SeatsBn" Type="smallint" Nullable="false" />
+    <Property Name="FareEco" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="FareBn" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="EcoFree" Type="smallint" Nullable="false" />
+    <Property Name="BnFree" Type="smallint" Nullable="false" />
+    <Property Name="FareCollected" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ReservationSet">
+    <Key>
+      <PropertyRef Name="TicketNo" />
+    </Key>
+    <Property Name="TicketNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightNo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ReservedBy" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ClassOfRes" Type="tinyint" Nullable="false" />
+    <Property Name="Fare" Type="decimal" Nullable="false" DefaultValue="0.0" Precision="19" Scale="4" />
+    <Property Name="DateOfRes" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="EMail" Type="varchar" Nullable="true" DefaultValue="Null" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CancellationSet">
+    <Key>
+      <PropertyRef Name="TicketNo" />
+    </Key>
+    <Property Name="TicketNo" Type="int" Nullable="false" />
+    <Property Name="Refund" Type="decimal" Nullable="false" DefaultValue="0.0" Precision="19" Scale="4" />
+    <Property Name="UserServiced" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CancelDate" Type="datetime" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PassengerSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FareCollected" Type="decimal" Nullable="false" DefaultValue="0.0" Precision="19" Scale="4" />
+    <Property Name="TotalTimesFlown" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Discount" Type="real" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="UserReservation">
+    <Key>
+      <PropertyRef Name="UserReservation_Reservation_Username" />
+      <PropertyRef Name="Reservation_TicketNo" />
+    </Key>
+    <Property Name="UserReservation_Reservation_Username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Reservation_TicketNo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ReservationFlightDetails">
+    <End Role="Reservation" Type="SkySharkDb.Store.ReservationSet" Multiplicity="*" />
+    <End Role="FlightDetails" Type="SkySharkDb.Store.FlightDetailsSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FlightDetails">
+        <PropertyRef Name="FlightNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="FlightNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservationCancellation">
+    <End Role="Cancellation" Type="SkySharkDb.Store.CancellationSet" Multiplicity="0..1" />
+    <End Role="Reservation" Type="SkySharkDb.Store.ReservationSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="TicketNo" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="TicketNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CancellationUser">
+    <End Role="Cancellation" Type="SkySharkDb.Store.CancellationSet" Multiplicity="*" />
+    <End Role="User" Type="SkySharkDb.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="UserServiced" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PassengerReservation">
+    <End Role="Passenger" Type="SkySharkDb.Store.PassengerSet" Multiplicity="1" />
+    <End Role="Reservation" Type="SkySharkDb.Store.ReservationSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="ReservedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserReservation_User">
+    <End Role="User" Type="SkySharkDb.Store.UserSet" Multiplicity="1" />
+    <End Role="UserReservation" Type="SkySharkDb.Store.UserReservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UserReservation">
+        <PropertyRef Name="UserReservation_Reservation_Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserReservation_Reservation">
+    <End Role="UserReservation" Type="SkySharkDb.Store.UserReservation" Multiplicity="*" />
+    <End Role="Reservation" Type="SkySharkDb.Store.ReservationSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="TicketNo" />
+      </Principal>
+      <Dependent Role="UserReservation">
+        <PropertyRef Name="Reservation_TicketNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SkySharkDb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SkySharkDbContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="SkySharkDb.User" />
+          <EntitySet Name="FlightDetailsSet" EntityType="SkySharkDb.FlightDetails" />
+          <EntitySet Name="ReservationSet" EntityType="SkySharkDb.Reservation" />
+          <AssociationSet Name="ReservationFlightDetails" Association="SkySharkDb.ReservationFlightDetails">
+            <End Role="Reservation" EntitySet="ReservationSet" />
+            <End Role="FlightDetails" EntitySet="FlightDetailsSet" />
+          </AssociationSet>
+          <EntitySet Name="CancellationSet" EntityType="SkySharkDb.Cancellation" />
+          <AssociationSet Name="ReservationCancellation" Association="SkySharkDb.ReservationCancellation">
+            <End Role="Cancellation" EntitySet="CancellationSet" />
+            <End Role="Reservation" EntitySet="ReservationSet" />
+          </AssociationSet>
+          <EntitySet Name="PassengerSet" EntityType="SkySharkDb.Passenger" />
+          <AssociationSet Name="CancellationUser" Association="SkySharkDb.CancellationUser">
+            <End Role="Cancellation" EntitySet="CancellationSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="PassengerReservation" Association="SkySharkDb.PassengerReservation">
+            <End Role="Passenger" EntitySet="PassengerSet" />
+            <End Role="Reservation" EntitySet="ReservationSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserReservation" Association="SkySharkDb.UserReservation">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Reservation" EntitySet="ReservationSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="false" >
+            <Documentation>
+              <Summary>Логин</Summary>
+              <LongDescription>Используется для доступа на веб-портал</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" >
+            <Documentation>
+              <Summary>Пароль</Summary>
+              <LongDescription>Пароль к учётной записи</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="Role" Type="SkySharkDb.UserRole" Nullable="false" >
+            <Documentation>
+              <Summary>Тип учётной записи</Summary>
+              <LongDescription>Тип учётной записи</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="passwordChanged" Type="Boolean" Nullable="false" DefaultValue="False" >
+            <Documentation>
+              <Summary>Изменён ли пароль</Summary>
+              <LongDescription>Изменён ли пароль с момента регистрации</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="EMail" Type="String" Nullable="false" Unicode="false" MaxLength="50" />
+          <NavigationProperty Name="Cancellation" Relationship="SkySharkDb.CancellationUser" FromRole="User" ToRole="Cancellation" />
+          <NavigationProperty Name="Reservation" Relationship="SkySharkDb.UserReservation" FromRole="User" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="FlightDetails">
+          <Key>
+            <PropertyRef Name="FlightNo" />
+          </Key>
+          <Property Name="FlightNo" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" Unicode="false" />
+          <Property Name="Origin" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Destination" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="DepTime" Type="DateTime" Nullable="false" />
+          <Property Name="ArrTime" Type="DateTime" Nullable="false" />
+          <Property Name="AircraftType" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="SeatsEco" Type="Int16" Nullable="false" />
+          <Property Name="SeatsBn" Type="Int16" Nullable="false" />
+          <Property Name="FareEco" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="FareBn" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="EcoFree" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="BnFree" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="FareCollected" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="TicketNo" />
+          </Key>
+          <Property Name="TicketNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Flight" Relationship="SkySharkDb.ReservationFlightDetails" FromRole="Reservation" ToRole="FlightDetails" />
+          <Property Name="FlightNo" Type="String" Nullable="false" MaxLength="20" Unicode="false" />
+          <Property Name="ReservedBy" Type="String" Nullable="false" Unicode="false" MaxLength="50" />
+          <Property Name="ClassOfRes" Type="SkySharkDb.FlightClass" Nullable="false" />
+          <Property Name="Fare" Type="Decimal" Nullable="false" Precision="19" Scale="4" DefaultValue="0.0" />
+          <Property Name="DateOfRes" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="SkySharkDb.ReservationStatus" Nullable="false" />
+          <NavigationProperty Name="Cancellation" Relationship="SkySharkDb.ReservationCancellation" FromRole="Reservation" ToRole="Cancellation" />
+          <NavigationProperty Name="Passenger" Relationship="SkySharkDb.PassengerReservation" FromRole="Reservation" ToRole="Passenger" />
+          <Property Name="EMail" Type="String" Nullable="true" DefaultValue="Null" Unicode="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="ReservationFlightDetails">
+          <End Type="SkySharkDb.Reservation" Role="Reservation" Multiplicity="*" />
+          <End Type="SkySharkDb.FlightDetails" Role="FlightDetails" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="FlightDetails">
+              <PropertyRef Name="FlightNo" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="FlightNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="FlightClass" UnderlyingType="Byte">
+          <Member Name="Eco" Value="1" />
+          <Member Name="Business" Value="2" />
+        </EnumType>
+        <EntityType Name="Cancellation" >
+          <Key>
+            <PropertyRef Name="TicketNo" />
+          </Key>
+          <NavigationProperty Name="Reservation" Relationship="SkySharkDb.ReservationCancellation" FromRole="Cancellation" ToRole="Reservation" />
+          <Property Name="TicketNo" Type="Int32" Nullable="false" />
+          <Property Name="Refund" Type="Decimal" Nullable="false" Precision="19" Scale="4" DefaultValue="0.0" />
+          <Property Name="UserServiced" Type="String" Nullable="false" MaxLength="50" Unicode="false" />
+          <Property Name="CancelDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Operator" Relationship="SkySharkDb.CancellationUser" FromRole="Cancellation" ToRole="User" />
+          <Property Name="Comment" Type="String" Nullable="true" Unicode="true" />
+        </EntityType>
+        <Association Name="ReservationCancellation">
+          <End Type="SkySharkDb.Cancellation" Role="Cancellation" Multiplicity="0..1" />
+          <End Type="SkySharkDb.Reservation" Role="Reservation" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="TicketNo" />
+            </Principal>
+            <Dependent Role="Cancellation">
+              <PropertyRef Name="TicketNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="UserRole" UnderlyingType="Byte">
+          <Member Name="Client" Value="1" />
+          <Member Name="Administrator" Value="2" />
+          <Member Name="Manager" Value="3" />
+          <Member Name="Executive" Value="4" />
+          <Member Name="Unqualified" Value="0" />
+        </EnumType>
+        <EntityType Name="Passenger" >
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="FareCollected" Type="Decimal" Nullable="false" Scale="4" Precision="19" DefaultValue="0.0" />
+          <Property Name="TotalTimesFlown" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="Discount" Type="Single" Nullable="false" DefaultValue="0.0" >
+            <Documentation>
+              <Summary>Скидка на билеты этого пассажира</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Reservation" Relationship="SkySharkDb.PassengerReservation" FromRole="Passenger" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="CancellationUser">
+          <End Type="SkySharkDb.Cancellation" Role="Cancellation" Multiplicity="*" />
+          <End Type="SkySharkDb.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Cancellation">
+              <PropertyRef Name="UserServiced" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PassengerReservation">
+          <End Type="SkySharkDb.Passenger" Role="Passenger" Multiplicity="1" />
+          <End Type="SkySharkDb.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="ReservedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserReservation">
+          <End Type="SkySharkDb.User" Role="User" Multiplicity="*" />
+          <End Type="SkySharkDb.Reservation" Role="Reservation" Multiplicity="*" />
+        </Association>
+        <EnumType Name="ReservationStatus" UnderlyingType="Byte">
+          <Member Name="Unprocessed" Value="0" />
+          <Member Name="Confirmed" Value="1" />
+          <Member Name="Cancelled" Value="2" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SkySharkDbStoreContainer" CdmEntityContainer="SkySharkDbContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SkySharkDb.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="passwordChanged" ColumnName="passwordChanged" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightDetailsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SkySharkDb.FlightDetails)">
+        <MappingFragment StoreEntitySet="FlightDetailsSet">
+          <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="DepTime" ColumnName="DepTime" />
+          <ScalarProperty Name="ArrTime" ColumnName="ArrTime" />
+          <ScalarProperty Name="AircraftType" ColumnName="AircraftType" />
+          <ScalarProperty Name="SeatsEco" ColumnName="SeatsEco" />
+          <ScalarProperty Name="SeatsBn" ColumnName="SeatsBn" />
+          <ScalarProperty Name="FareEco" ColumnName="FareEco" />
+          <ScalarProperty Name="FareBn" ColumnName="FareBn" />
+          <ScalarProperty Name="EcoFree" ColumnName="EcoFree" />
+          <ScalarProperty Name="BnFree" ColumnName="BnFree" />
+          <ScalarProperty Name="FareCollected" ColumnName="FareCollected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SkySharkDb.Reservation)">
+        <MappingFragment StoreEntitySet="ReservationSet">
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+          <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+          <ScalarProperty Name="ReservedBy" ColumnName="ReservedBy" />
+          <ScalarProperty Name="ClassOfRes" ColumnName="ClassOfRes" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="DateOfRes" ColumnName="DateOfRes" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CancellationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SkySharkDb.Cancellation)">
+        <MappingFragment StoreEntitySet="CancellationSet">
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+          <ScalarProperty Name="Refund" ColumnName="Refund" />
+          <ScalarProperty Name="UserServiced" ColumnName="UserServiced" />
+          <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassengerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SkySharkDb.Passenger)">
+        <MappingFragment StoreEntitySet="PassengerSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FareCollected" ColumnName="FareCollected" />
+          <ScalarProperty Name="TotalTimesFlown" ColumnName="TotalTimesFlown" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserReservation" TypeName="SkySharkDb.UserReservation" StoreEntitySet="UserReservation">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Username" ColumnName="UserReservation_Reservation_Username" />
+      </EndProperty>
+      <EndProperty Name="Reservation">
+        <ScalarProperty Name="TicketNo" ColumnName="Reservation_TicketNo" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,42 @@
+﻿.absoluteCenter {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.accountListStyle {
+    display: inline-block;
+    height: 100%;
+    width: 400px;
+}
+.divAboveGrid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.userGridView {
+    display: table;
+    margin: 20px auto;
+    border-style: none;
+    text-align: center;
+}
+.greyColor {
+    color: #222222;
+}
+.noBorder {
+    border-style: none;
+}
+.validationSummaryMiddle {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+}
+.greyBorder {
+    border-color: #666666;
+}
+.inlineblocked {
+    display: inline-block;
+}
+.filterDiv {
+    display: block;
+    margin: 10px auto;
+}

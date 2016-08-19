@@ -1,0 +1,37 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<%-- Hyperlink skin for tabs in top bar --%>
+<asp:LinkButton runat="server" SkinId="skn_greyTabHyperlinkXLarge" Font-Bold="True" Font-Size="X-Large" Font-Names="Arial" ForeColor="#666666" Height="40px" Font-Underline="False"/>
+<asp:LinkButton runat="server" SkinId="skn_greyTabHyperlinkMedium" Font-Bold="True" Font-Size="Large" Font-Names="Arial" ForeColor="#666666" Height="40px" Font-Underline="False"/>
+<asp:LinkButton runat="server" SkinId="skn_greyTabHyperlinkSmall" Font-Bold="True" Font-Size="Medium" Font-Names="Arial" ForeColor="#666666" Height="40px" Font-Underline="False"/>
+<asp:HyperLink runat="server" SkinId="skn_greyHyperLink" Font-Bold="True" Font-Size="Medium" Font-Names="Arial" ForeColor="#666666" Height="40px" Font-Underline="False" />
+
+<asp:Label runat="server" SkinId="skn_loginLabel" Font-Size="Medium" Font-Names="Arial" ForeColor="White" Height="40px"/>
+<asp:Label runat="server" SkinId="skn_welcomeLabel" Font-Italic="True" Font-Size="XX-Large" ForeColor="White"/>
+<asp:Label runat="server" SkinId="skn_xLargeText" Font-Italic="false" Font-Size="X-Large" ForeColor="#222222"/>
+<asp:Label runat="server" SkinId="skn_largeText" Font-Italic="false" Font-Size="Large" ForeColor="#222222"/>
+<asp:Label runat="server" SkinId="skn_mediumText" Font-Italic="false" Font-Size="Medium" ForeColor="#222222"/>
+<asp:Label runat="server" SkinId="skn_smallText" Font-Italic="false" Font-Size="Small" ForeColor="#222222"/>
+
+<asp:Panel runat="server" SkinId="skn_tabPanel" BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" Height="40px"/>
+
+<asp:Button runat="server" SkinId="skn_loginBtn" Width="100px" Height="40px" Font-Size="Large"/>
+<asp:Button runat="server" SkinId="skn_chengePwBtn" Width="160px" Height="40px" Font-Size="Large"/>
+<asp:Button runat="server" SkinId="skn_registerBtn" Width="190px" Height="40px" Font-Size="Large"/>
+<asp:Button runat="server" SkinId="skn_addBtn" Width="100px" Height="30px" Font-Size="Medium"/>
+<asp:Button runat="server" SkinId="skn_reserveBtn" Width="100px" Height="23px" Font-Size="Small"/>
+<asp:Button runat="server" SkinId="skn_discountBtn" Width="200px" Height="23px" Font-Size="Small"/>

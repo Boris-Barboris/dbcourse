@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterForm.Master.cs" Inherits="WebPortal.WebForms.MasterForm" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SkyShark Airlines master page</title>
+    <link rel="stylesheet" type="text/css" href="MasterForm.css"/>
+    <asp:ContentPlaceHolder id="head" runat="server" />
+</head>
+<body style="margin: 0px">
+    <form id="form1" runat="server">
+        <asp:LinkButton id="pageHeader" runat="server" Font-Underline="False" PostBackUrl="~/WebForms/Common/Default.aspx" ValidationGroup="generalVG">
+            SkyShark Airlines
+        </asp:LinkButton>
+        <asp:Panel ID="tabPanel" runat="server" SkinID="skn_tabPanel">
+            <asp:Panel id="left_tabs" runat="server">
+                <asp:LinkButton ID="viewFlightsLink" CssClass="tabLink" runat="server" SkinID="skn_greyTabHyperlinkMedium" Text="Рейсы" ValidationGroup="generalVG" PostBackUrl="~/WebForms/Common/FlightList.aspx"/>
+                <asp:LinkButton ID="companyDescLink" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="О компании" PostBackUrl="~/WebForms/Common/About.aspx" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="manageUsers" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Аккаунты" PostBackUrl="~/WebForms/NetworkAdministrator/ManageUsers.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="createFlightLink" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Новый рейс" PostBackUrl="~/WebForms/BusinessManager/NewFlight.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="personalTicketsLink" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Мои билеты" PostBackUrl="~/WebForms/Common/PersonalTickets.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="searchReservations" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Поиск бронирования" PostBackUrl="~/WebForms/Executive/SearchReservations.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="finReport" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Финансовый отчёт" PostBackUrl="~/WebForms/BusinessManager/FinReport.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="backUp" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Архивирование" PostBackUrl="~/WebForms/NetworkAdministrator/BackUp.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="passengerList" CssClass="tabLink" runat="server" SkinId="skn_greyTabHyperlinkMedium" Text="Пассажиры" PostBackUrl="~/WebForms/BusinessManager/PassengerList.aspx" Visible="False" ValidationGroup="generalVG"/>
+                <asp:contentplaceholder id="leftTabsPlaceholder" runat="server" />
+            </asp:Panel>
+            <asp:Panel id="right_tabs" runat="server">
+                <asp:Label ID="loginLabel" CssClass="tabLinkRight" runat="server" Text="Вход не выполнен" SkinID="skn_loginLabel" />
+                <asp:LinkButton ID="loginLink" CssClass="tabLinkRight" runat="server" Text="Войти" SkinID="skn_greyTabHyperlinkMedium" PostBackUrl="~/WebForms/Common/Login.aspx" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="registerLink" CssClass="tabLinkRight" runat="server" Text="Зарегистрироваться" SkinID="skn_greyTabHyperlinkMedium" PostBackUrl="~/WebForms/Common/RegisterClient.aspx" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="logoffLink" CssClass="tabLinkRight" runat="server" Text="Выйти" SkinID="skn_greyTabHyperlinkMedium" Visible="False" OnClick="logoffLink_Click" ValidationGroup="generalVG"/>
+                <asp:LinkButton ID="changePassword" CssClass="tabLinkRight" runat="server" Text="Сменить пароль" SkinID="skn_greyTabHyperlinkMedium" Visible="False" PostBackUrl="~/WebForms/Common/ChangePassword.aspx" ValidationGroup="generalVG"/>
+                <asp:contentplaceholder id="rightTabsPlaceholder" runat="server" />
+            </asp:Panel>
+        </asp:Panel>
+        <div id="pageContent">
+            <asp:contentplaceholder id="contentPlaceholder" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
